@@ -2,19 +2,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useRef } from "react";
 
-const Filter = () => {
+interface FilterProps {
+  filterCriteria: {
+    search: string;
+    region: string;
+  };
+  setFilterCriteria: React.Dispatch<React.SetStateAction<{ search: string; region: string }>>;
+}
+
+const Filter: React.FC<FilterProps> = ({ filterCriteria, setFilterCriteria }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedRegion, setSelectedRegion] = useState("");
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const regions = ["All", "Africa", "Americas", "Asia", "Europe", "Oceania"];
+  const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
   const handleSelect = (region: string) => {
-    setSelectedRegion(region);
+    setFilterCriteria((prev) => ({ ...prev, region }));
     setIsOpen(false);
   };
 
@@ -31,6 +38,10 @@ const Filter = () => {
     };
   }, []);
 
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFilterCriteria((prev) => ({ ...prev, search: e.target.value }));
+  };
+
   return (
     <div className="flex flex-col md:flex-row justify-between items-start gap-5 py-5">
       <div className="w-full md:w-auto relative">
@@ -38,6 +49,7 @@ const Filter = () => {
           type="text"
           className="w-full py-2 pl-10 pr-4 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-transparent"
           placeholder="Search for a country..."
+          onChange={handleSearch}
         />
         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
           <FontAwesomeIcon icon={faSearch} className="text-gray-400" />
@@ -60,7 +72,7 @@ const Filter = () => {
                 <button
                   key={region}
                   className={`${
-                    selectedRegion === region ? "bg-gray-100 text-gray-900" : "text-gray-700"
+                    filterCriteria.region === region ? "bg-gray-100 text-gray-900" : "text-gray-700"
                   } block px-4 py-2 text-sm w-full text-left hover:bg-gray-100 hover:text-gray-900 items-center`}
                   onClick={() => handleSelect(region)}
                 >
