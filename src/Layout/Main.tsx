@@ -1,18 +1,14 @@
 import { Outlet } from "react-router-dom";
-import Header from "../Components/Header/Header";
+import Header from "../components/Header/Header";
 
 const Main = () => {
   return (
-    <div className="bg-very-light-gray min-h-screen">
+    <>
       <Header />
-      <main className="p-4">
+      <main className="bg-very-light-gray px-5 md:px-16 lg:px-24 p-5">
         <Outlet />
-        {/* <p className="text-homepage text-dark-gray">Welcome to the homepage!</p>
-        <p className="text-detail-page text-dark-blue mt-4">
-          This is a detail page with more text.
-        </p> */}
       </main>
-    </div>
+    </>
   );
 };
 
