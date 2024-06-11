@@ -11,7 +11,7 @@ interface CountriesCardProps {
     };
     population: number;
     region: string;
-    capital: string[];
+    capital?: string[];
   };
 }
 
@@ -37,7 +37,8 @@ const CountriesCard: React.FC<CountriesCardProps> = ({ countriesData }) => {
           Region : <span className="font-normal">{region}</span>
         </p>
         <p>
-          Capital : <span className="font-normal">{capital?.length > 0 && capital[0]}</span>
+          Capital :{" "}
+          <span className="font-normal">{capital && capital?.length > 0 && capital[0]}</span>
         </p>
       </div>
     </section>
