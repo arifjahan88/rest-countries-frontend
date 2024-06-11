@@ -1,6 +1,6 @@
 # Country Explorer
 
-Country Explorer is a web application built with React and TypeScript that allows users to explore and learn about different countries around the world. It fetches data from the [REST Countries API](https://restcountries.com/#api-endpoints-v2) and displays it in an organized and user-friendly manner.
+Country Explorer is a web application built with React and TypeScript that allows users to explore and learn about different countries around the world. It fetches data from the [REST Countries API](https://restcountries.com/v3.1/all) and displays it in an organized and user-friendly manner.
 
 ## Features
 
