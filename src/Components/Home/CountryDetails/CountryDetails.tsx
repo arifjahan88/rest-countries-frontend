@@ -1,9 +1,18 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { DataDisplay } from "./DataDisplay";
 
 const CountryDetails = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { flags, name } = location.state;
+  const AllData = DataDisplay(location.state);
+
+  // Split the data into two halves
+  const middleIndex = Math.ceil(AllData.length / 2);
+  const leftData = AllData.slice(0, middleIndex);
+  const rightData = AllData.slice(middleIndex);
 
   return (
     <section>
@@ -15,21 +24,26 @@ const CountryDetails = () => {
         Back
       </button>
       <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-x-10">
-        <img
-          src="https://images.pexels.com/photos/1202723/pexels-photo-1202723.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="Belgium Flag"
-        />
+        <img className="w-full" src={flags?.png} alt={`${name?.common} Flag`} />
         <div>
-          <h2 className="text-2xl font-bold mb-2">Belgium</h2>
-          <p className="text-gray-600">Native Name: België</p>
-          <p className="text-gray-600">Population: 11,319,511</p>
-          <p className="text-gray-600">Region: Europe</p>
-          <p className="text-gray-600">Sub Region: Western Europe</p>
-          <p className="text-gray-600">Capital: Brussels</p>
-          <p className="text-gray-600">Top Level Domain: .be</p>
-          <p className="text-gray-600">Currencies: Euro</p>
-          <p className="text-gray-600">Languages: Dutch, French, German</p>
-          <p className="text-gray-600">Border Countries: France, Germany, Netherlands</p>
+          {/* <h2 className="text-2xl font-bold mb-2">{name?.common}</h2> */}
+          <h2 className="text-2xl font-bold mb-2">{name?.common}</h2>
+          <div className="flex flex-col lg:flex-row gap-5">
+            <div className="w-1/2">
+              {leftData.map((entry, index) => (
+                <p key={index} className="text-gray-600">
+                  <span className="font-bold">{entry.title}:</span> {entry.value}
+                </p>
+              ))}
+            </div>
+            <div className="w-1/2">
+              {rightData.map((entry, index) => (
+                <p key={index} className="text-gray-600">
+                  <span className="font-bold">{entry.title}:</span> {entry.value}
+                </p>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

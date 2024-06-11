@@ -1,22 +1,37 @@
-const CountriesCard = () => {
+import React from "react";
+
+interface CountriesCardProps {
+  countriesData: {
+    flags: {
+      png: string;
+    };
+    name: {
+      common: string;
+    };
+    population: number;
+    region: string;
+    capital: string[];
+  };
+}
+
+const CountriesCard: React.FC<CountriesCardProps> = ({ countriesData }) => {
+  const { flags, name, population, region, capital } = countriesData;
   return (
-    <section className="max-w-xs shadow-md cursor-pointer hover:shadow-xl duration-300">
-      <div>
-        <img
-          src="https://images.pexels.com/photos/1202723/pexels-photo-1202723.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt=""
-        />
+    <section className="shadow-md cursor-pointer hover:shadow-xl duration-300">
+      <div className="flex justify-center w-full">
+        {" "}
+        <img className="h-48 object-cover w-full" src={flags?.png} alt={name?.common} />{" "}
       </div>
       <div className="font-semibold p-5">
-        <h3 className="mb-3">Germany</h3>
+        <h3 className="mb-3">{name?.common}</h3>
         <p>
-          Population : <span className="font-normal">data</span>
+          Population : <span className="font-normal">{population}</span>
         </p>
         <p>
-          Region : <span className="font-normal">data</span>
+          Region : <span className="font-normal">{region}</span>
         </p>
         <p>
-          Capital : <span className="font-normal">data</span>
+          Capital : <span className="font-normal">{capital?.length > 0 && capital[0]}</span>
         </p>
       </div>
     </section>
