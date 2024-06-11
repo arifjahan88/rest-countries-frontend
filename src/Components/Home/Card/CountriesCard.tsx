@@ -20,7 +20,7 @@ const CountriesCard: React.FC<CountriesCardProps> = ({ countriesData }) => {
   const darkMode = ThemeToggle();
   return (
     <section
-      className={`shadow-md cursor-pointer hover:shadow-xl duration-300 ${
+      className={`shadow-md cursor-pointer hover:shadow-xl hover:-translate-y-2 duration-700 ${
         darkMode && "bg-dark-blue"
       }`}
     >

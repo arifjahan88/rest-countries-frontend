@@ -19,6 +19,7 @@ interface Country {
 
 const Home = () => {
   const [filterCriteria, setFilterCriteria] = useState({ search: "", region: "" });
+  //API call to get all countries
   const { data: AllCountriesData, isLoading: AllCountriesLoading } = useGetAllCountriesQuery({});
 
   if (AllCountriesLoading) {
@@ -36,7 +37,7 @@ const Home = () => {
   return (
     <section>
       <Filter filterCriteria={filterCriteria} setFilterCriteria={setFilterCriteria} />
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-10">
         {filteredCountries?.slice(0, 8)?.map((country: Country) => (
           <Link to={`/country/${country.name.common}`} key={country.name.common} state={country}>
             <CountriesCard countriesData={country} />

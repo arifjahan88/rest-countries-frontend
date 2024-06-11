@@ -9,7 +9,7 @@ const Main = () => {
       className={
         darkMode
           ? "bg-very-dark-blue-bg text-very-light-gray min-h-screen"
-          : "bg-very-light-gray text-very-dark-blue-text"
+          : "bg-white text-very-dark-blue-text"
       }
     >
       <Header />

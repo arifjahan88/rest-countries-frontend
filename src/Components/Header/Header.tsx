@@ -8,6 +8,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const darkMode = ThemeToggle();
 
+  // Toggle dark mode
   const handleToggle = () => {
     dispatch(toggleDarkMode());
   };

@@ -24,7 +24,7 @@ const CountryDetails = () => {
     >
       <button
         onClick={() => navigate(-1)}
-        className={`flex items-center px-4 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 my-10 ${
+        className={`flex items-center px-4 py-2 border rounded shadow-sm focus:outline-none my-10 ${
           darkMode
             ? "border-gray-700 text-very-light-gray bg-very-dark-blue-bg hover:bg-gray-800 focus:ring-gray-500"
             : "border-gray-300 text-gray-700 bg-white hover:bg-gray-100 focus:ring-blue-500"
