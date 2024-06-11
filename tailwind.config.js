@@ -13,11 +13,6 @@ export default {
       fontFamily: {
         nunito: ["Nunito Sans", "sans-serif"],
       },
-
-      // fontSize: {
-      //   homepage: "14px",
-      //   "detail-page": "16px",
-      // },
     },
   },
   plugins: [],

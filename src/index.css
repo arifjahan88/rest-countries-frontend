@@ -5,7 +5,6 @@
 @tailwind utilities;
 
 body {
-  @apply bg-very-light-gray;
   font-family: "Nunito Sans", sans-serif;
 }
 
