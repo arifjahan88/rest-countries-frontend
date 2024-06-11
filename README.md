@@ -24,7 +24,7 @@ Country Explorer is a web application built with React and TypeScript that allow
 ## Installation and Setup
 
 1. Clone the repository: `git clone https://github.com/arifjahan88/rest-countries-frontend`
-2. Navigate to the project directory: `cd country-explorer`
+2. Navigate to the project directory: `cd rest-countries-frontend`
 3. Install dependencies: `npm install or yarn`
 4. Start the development server: `npm run dev or yarn dev`
 5. Open your browser and visit `http://localhost:5173` to see the application.
